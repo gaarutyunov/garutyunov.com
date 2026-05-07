@@ -1,6 +1,8 @@
 import { skills } from "@/lib/skills";
 import { experience } from "@/lib/experience";
 
+export const dynamic = "force-static";
+
 export function GET() {
   const lines: string[] = [
     "# German Arutyunov — Principal Engineer",

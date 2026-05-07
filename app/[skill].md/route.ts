@@ -1,6 +1,8 @@
 import { skills, getSkill } from "@/lib/skills";
 import { renderSkillMarkdown } from "@/lib/markdown";
 
+export const dynamic = "force-static";
+
 export function generateStaticParams() {
   return skills.map((s) => ({ skill: s.id }));
 }
