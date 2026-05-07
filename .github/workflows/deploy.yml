@@ -31,6 +31,12 @@ jobs:
       - name: Build static export
         run: npm run build
 
+      - name: Add .png extension to OG image
+        run: |
+          mv out/opengraph-image out/opengraph-image.png
+          grep -rl '/opengraph-image?' out --include='*.html' \
+            | xargs -r sed -i 's|/opengraph-image?|/opengraph-image.png?|g'
+
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
