@@ -17,6 +17,13 @@
 /.next/
 /out/
 
+# editor / mcp tooling
+/.playwright-mcp/
+/.serena/
+
+# screenshots from playwright
+/*.png
+
 # production
 /build
 

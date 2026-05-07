@@ -1,26 +1,78 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+/* skills.sh-aligned tokens */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background:    #000000;
+  --card:          #1a1a1a;
+  --card-hover:    #1f1f1f;
+  --foreground:    #ededed;
+  --muted:         #878787;
+  --dim:           #454545;
+  --border:        #1a1a1a;
+  --border-subtle: #111111;
+
+  --c-blue:   #54a2ff;
+  --c-green:  #00c758;
+  --c-amber:  #fcbb00;
+  --c-purple: #ac4bff;
+  --c-red:    #ff6568;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background:    var(--background);
+  --color-card:          var(--card);
+  --color-card-hover:    var(--card-hover);
+  --color-foreground:    var(--foreground);
+  --color-muted:         var(--muted);
+  --color-dim:           var(--dim);
+  --color-border:        var(--border);
+  --color-border-subtle: var(--border-subtle);
+
+  --color-c-blue:   var(--c-blue);
+  --color-c-green:  var(--c-green);
+  --color-c-amber:  var(--c-amber);
+  --color-c-purple: var(--c-purple);
+  --color-c-red:    var(--c-red);
+
+  --font-sans:    var(--font-geist-sans);
+  --font-mono:    var(--font-geist-mono);
+  --font-display: var(--font-fira-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background-color: var(--background);
+  color: var(--foreground);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+.mask-fade-x {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
 }
