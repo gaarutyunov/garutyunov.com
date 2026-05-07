@@ -1,11 +1,29 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 
 export const dynamic = "force-static";
 export const alt = "German Arutyunov — Principal Engineer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
+const BANNER = ` ██████╗ ███████╗██████╗ ███╗   ███╗ █████╗ ███╗   ██╗
+██╔════╝ ██╔════╝██╔══██╗████╗ ████║██╔══██╗████╗  ██║
+██║  ███╗█████╗  ██████╔╝██╔████╔██║███████║██╔██╗ ██║
+██║   ██║██╔══╝  ██╔══██╗██║╚██╔╝██║██╔══██║██║╚██╗██║
+╚██████╔╝███████╗██║  ██║██║ ╚═╝ ██║██║  ██║██║ ╚████║
+ ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝
+
+ █████╗ ██████╗ ██╗   ██╗████████╗██╗   ██╗██╗   ██╗███╗   ██╗ ██████╗ ██╗   ██╗
+██╔══██╗██╔══██╗██║   ██║╚══██╔══╝╚██╗ ██╔╝██║   ██║████╗  ██║██╔═══██╗██║   ██║
+███████║██████╔╝██║   ██║   ██║    ╚████╔╝ ██║   ██║██╔██╗ ██║██║   ██║██║   ██║
+██╔══██║██╔══██╗██║   ██║   ██║     ╚██╔╝  ██║   ██║██║╚██╗██║██║   ██║╚██╗ ██╔╝
+██║  ██║██║  ██║╚██████╔╝   ██║      ██║   ╚██████╔╝██║ ╚████║╚██████╔╝ ╚████╔╝
+╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝    ╚═╝      ╚═╝    ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝   ╚═══╝`;
+
 export default async function OG() {
+  const fontData = await readFile(join(process.cwd(), "app/og-font.ttf"));
+
   return new ImageResponse(
     (
       <div
@@ -16,42 +34,31 @@ export default async function OG() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: "80px 96px",
-          fontFamily: "monospace",
+          padding: "56px 64px",
           color: "#ffffff",
+          fontFamily: "Fira Mono",
           position: "relative",
         }}
       >
         <div
           style={{
             display: "flex",
-            color: "#737373",
-            fontSize: 28,
-            marginBottom: 28,
+            whiteSpace: "pre",
+            fontSize: 13,
+            lineHeight: 1.25,
+            letterSpacing: -1,
           }}
         >
-          $ whoami
-        </div>
-        <div
-          style={{
-            display: "flex",
-            fontSize: 96,
-            fontWeight: 700,
-            lineHeight: 1,
-            letterSpacing: -3,
-          }}
-        >
-          GERMAN ARUTYUNOV
+          {BANNER}
         </div>
         <div
           style={{
             display: "flex",
             color: "#a3a3a3",
-            fontSize: 34,
+            fontSize: 24,
             marginTop: 36,
-            lineHeight: 1.35,
+            lineHeight: 1.4,
             maxWidth: 1000,
-            fontFamily: "sans-serif",
           }}
         >
           Principal Engineer — AI-native product delivery, distributed systems,
@@ -61,16 +68,19 @@ export default async function OG() {
           style={{
             display: "flex",
             position: "absolute",
-            bottom: 56,
-            right: 96,
+            bottom: 36,
+            right: 64,
             color: "#525252",
-            fontSize: 22,
+            fontSize: 18,
           }}
         >
           garutyunov.com
         </div>
       </div>
     ),
-    { ...size },
+    {
+      ...size,
+      fonts: [{ name: "Fira Mono", data: fontData, style: "normal", weight: 400 }],
+    },
   );
 }
