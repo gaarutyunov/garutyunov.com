@@ -141,7 +141,6 @@ export default function RootLayout({
             <Link href="/cv" className="text-sm text-muted hover:text-foreground transition-colors">
               CV
             </Link>
-            <HumanAiSwitch />
             <a
               href="mailto:germanarutyunov@gmail.com"
               aria-label="Email"
@@ -177,6 +176,7 @@ export default function RootLayout({
                 <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.05-1.86-3.05-1.86 0-2.15 1.45-2.15 2.95v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.65-1.86 3.4-1.86 3.63 0 4.3 2.39 4.3 5.5v6.25ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.02H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"/>
               </svg>
             </a>
+            <HumanAiSwitch />
           </nav>
         </header>
         <main className="flex-1 py-6 sm:py-8 lg:py-8">{children}</main>
