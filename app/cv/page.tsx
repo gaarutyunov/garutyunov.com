@@ -8,7 +8,10 @@ export const metadata: Metadata = {
   title: "CV",
   description:
     "Principal Engineer. 7+ years in fintech and SaaS — AI, distributed systems, micro frontends, cloud infrastructure, and engineering leadership.",
-  alternates: { canonical: "/cv" },
+  alternates: {
+    canonical: "/cv",
+    types: { "text/markdown": "/cv.md" },
+  },
 };
 
 const cvSkills = [

@@ -20,7 +20,10 @@ export async function generateMetadata({
   return {
     title: skill.title,
     description: skill.summary,
-    alternates: { canonical: `/${skill.id}` },
+    alternates: {
+      canonical: `/${skill.id}`,
+      types: { "text/markdown": `/${skill.id}.md` },
+    },
   };
 }
 
