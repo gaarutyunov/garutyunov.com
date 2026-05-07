@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fira_Mono, Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
+import { HumanAiSwitch } from "@/components/human-ai-switch";
 import "./globals.css";
 
 const firaMono = Fira_Mono({
@@ -143,9 +144,7 @@ export default function RootLayout({
             <Link href="/cv" className="text-sm text-muted hover:text-foreground transition-colors">
               CV
             </Link>
-            <a href="/llms.txt" className="hidden sm:inline text-sm text-muted hover:text-foreground transition-colors">
-              /llms.txt
-            </a>
+            <HumanAiSwitch />
             <a
               href="mailto:germanarutyunov@gmail.com"
               aria-label="Email"
