@@ -1,12 +1,7 @@
-import { renderCvMarkdown } from "@/lib/markdown";
+import { cvMarkdownResponse } from "@/lib/markdown";
 
 export const dynamic = "force-static";
 
 export function GET() {
-  return new Response(renderCvMarkdown(), {
-    headers: {
-      "Content-Type": "text/markdown; charset=utf-8",
-      "Cache-Control": "public, max-age=3600",
-    },
-  });
+  return cvMarkdownResponse();
 }

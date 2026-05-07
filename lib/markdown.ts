@@ -1,7 +1,24 @@
 import type { Skill } from "./skills";
-import { skills } from "./skills";
+import { skills, getSkill } from "./skills";
 import { experience } from "./experience";
 import { getExperienceForSkill } from "./experience";
+
+const MD_HEADERS = {
+  "Content-Type": "text/markdown; charset=utf-8",
+  "Cache-Control": "public, max-age=3600",
+};
+
+export function skillMarkdownResponse(skillId: string): Response {
+  const skill = getSkill(skillId);
+  if (!skill) {
+    return new Response("Not found", { status: 404 });
+  }
+  return new Response(renderSkillMarkdown(skill), { headers: MD_HEADERS });
+}
+
+export function cvMarkdownResponse(): Response {
+  return new Response(renderCvMarkdown(), { headers: MD_HEADERS });
+}
 
 const CV_SKILLS = [
   "Go", "Python", "SQL", "PyTorch", "MLX", "LLM Integration",
