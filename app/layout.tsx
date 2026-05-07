@@ -71,14 +71,16 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
     siteName: "German Arutyunov",
-    title: TITLE,
-    description: DESCRIPTION,
+    title: "German Arutyunov",
+    description:
+      "AI-native product delivery, distributed systems, micro frontends, cloud infrastructure, and engineering leadership.",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: TITLE,
-    description: DESCRIPTION,
+    title: "German Arutyunov",
+    description:
+      "AI-native product delivery, distributed systems, micro frontends, cloud infrastructure, and engineering leadership.",
   },
 };
 
