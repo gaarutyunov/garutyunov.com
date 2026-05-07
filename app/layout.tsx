@@ -80,9 +80,6 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
   },
-  icons: {
-    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
-  },
 };
 
 const personJsonLd = {
