@@ -3,6 +3,8 @@ import { skills } from "@/lib/skills";
 
 const SITE_URL = "https://garutyunov.com";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   return [
