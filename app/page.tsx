@@ -1,11 +1,19 @@
 import { skills } from "@/lib/skills";
+import { projects } from "@/lib/projects";
+import { fetchAllProjectMeta } from "@/lib/og";
 import { AsciiName } from "@/components/ascii-name";
 import { CodeSnippet } from "@/components/code-snippet";
 import { TechIcons } from "@/components/tech-icons";
 import { SkillsLeaderboard } from "@/components/skills-leaderboard";
+import { PetProjects } from "@/components/pet-projects";
 import { SectionLabel } from "@/components/section-label";
 
-export default function Home() {
+// Statically prerendered: project metadata is crawled once at build time.
+export const dynamic = "force-static";
+
+export default async function Home() {
+  const resolvedProjects = await fetchAllProjectMeta(projects);
+
   return (
     <div className="min-h-screen max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Hero */}
@@ -39,6 +47,8 @@ export default function Home() {
       </section>
 
       <SkillsLeaderboard skills={skills} />
+
+      <PetProjects projects={resolvedProjects} />
     </div>
   );
 }
