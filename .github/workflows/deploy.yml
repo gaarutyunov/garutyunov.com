@@ -1,3 +1,9 @@
+# Production deploy to GitHub Pages from main.
+# Publishes the static export to the ROOT of the gh-pages branch so it coexists
+# with PR previews under pr-preview/ (pr-preview.yml). GitHub Pages serves a
+# single source; "Deploy from a branch" (gh-pages) is the source the preview
+# action requires, so production and previews share one source instead of
+# fighting over it.
 name: Deploy to GitHub Pages
 
 on:
@@ -5,17 +11,17 @@ on:
     branches: [main]
   workflow_dispatch:
 
+# Push the built site to the gh-pages branch.
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
+# Serialize production deploys; don't cancel an in-progress one.
 concurrency:
-  group: pages
+  group: pages-deploy
   cancel-in-progress: false
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -37,18 +43,12 @@ jobs:
           grep -rl '/opengraph-image?' out --include='*.html' \
             | xargs -r sed -i 's|/opengraph-image?|/opengraph-image.png?|g'
 
-      - uses: actions/configure-pages@v5
-
-      - uses: actions/upload-pages-artifact@v3
+      - name: Publish to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: ./out
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./out
+          # Keep the pr-preview/ subtree already on the branch — only the
+          # production files at the root are overwritten.
+          keep_files: true
