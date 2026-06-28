@@ -1,0 +1,55 @@
+# PR previews via rossjrw/pr-preview-action.
+# Builds the static export under a per-PR sub-path and publishes it to
+# gh-pages at pr-preview/pr-<N>/, cleaning up when the PR closes.
+name: PR Preview
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, closed]
+
+# Required for the action to push to the gh-pages branch and comment.
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: pr-preview-${{ github.event.number }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        if: github.event.action != 'closed'
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        if: github.event.action != 'closed'
+        run: npm ci
+
+      - name: Build static export
+        if: github.event.action != 'closed'
+        # basePath must match the preview sub-path so /_next/ assets resolve.
+        env:
+          NEXT_PUBLIC_BASE_PATH: /pr-preview/pr-${{ github.event.number }}
+        run: npm run build
+
+      - name: Add .png extension to OG image
+        if: github.event.action != 'closed'
+        run: |
+          mv out/opengraph-image out/opengraph-image.png
+          grep -rl '/opengraph-image?' out --include='*.html' \
+            | xargs -r sed -i 's|/opengraph-image?|/opengraph-image.png?|g'
+
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: ./out
+          preview-branch: gh-pages
+          umbrella-dir: pr-preview
+          action: auto

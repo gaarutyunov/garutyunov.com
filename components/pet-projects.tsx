@@ -1,4 +1,5 @@
 import type { ResolvedProject } from "@/lib/projects";
+import { asset } from "@/lib/base-path";
 import { SectionLabel } from "@/components/section-label";
 
 function formatCreated(created: string) {
@@ -28,7 +29,7 @@ export function PetProjects({ projects }: { projects: ResolvedProject[] }) {
             <div className="flex items-center gap-3">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={project.icon}
+                src={asset(project.icon)}
                 alt=""
                 width={40}
                 height={40}

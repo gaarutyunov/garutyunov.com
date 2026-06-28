@@ -18,6 +18,7 @@ import {
   siOpentelemetry,
 } from "simple-icons";
 import { AWS_ICON } from "@/lib/icons";
+import { asset } from "@/lib/base-path";
 
 type IconItem =
   | { label: string; path: string; viewBox?: string; src?: never }
@@ -56,7 +57,7 @@ function Icon({ item }: { item: IconItem }) {
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={item.src}
+          src={asset(item.src)}
           alt={item.label}
           width={32}
           height={32}
