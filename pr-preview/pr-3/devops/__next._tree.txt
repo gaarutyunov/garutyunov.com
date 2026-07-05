@@ -1,0 +1,7 @@
+:HL["/pr-preview/pr-3/_next/static/chunks/176tbet~wsgmg.css","style"]
+:HL["/pr-preview/pr-3/_next/static/media/788ad271f9d0b1c8-s.p.0ozfxe_l0spp4.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/pr-preview/pr-3/_next/static/media/797e433ab948586e-s.p.08e28id.o-okb.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/pr-preview/pr-3/_next/static/media/9ce9a4a38ba25966-s.p.0ai088f2k10g..woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/pr-preview/pr-3/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/pr-preview/pr-3/_next/static/media/cfbeec1432aa9326-s.p.0al9mw4orhbgl.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"skill","param":{"type":"d","key":"devops","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"RTVD9O5uWAk0wYPA_dZpK"}

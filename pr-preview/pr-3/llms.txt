@@ -1,0 +1,256 @@
+# German Arutyunov — Principal Engineer
+
+> Principal Engineer with 7+ years across fintech and SaaS. AI-native development, distributed systems, micro-frontend architecture, cloud infrastructure, and engineering leadership.
+
+## About
+
+Based in Malaga, Spain. Currently Principal Engineer at TradingView (since Jan 2025; promoted from Team Lead in Apr 2026). Master's in Data Analysis and Financial Technologies from HSE Moscow (2017–2023, GPA 8.0).
+
+Open to engagements that combine AI-native product delivery, resilient infrastructure, and engineering leadership.
+
+## Contact
+
+- Email: germanarutyunov@gmail.com
+- GitHub: https://github.com/gaarutyunov
+- LinkedIn: https://linkedin.com/in/german-arutyunov/
+- CV (docx): /German_Arutyunov_CV.docx
+
+## Areas of expertise
+
+### AI (1y)
+
+AI-native development, agentic systems for ops & engineering
+
+AI-native development approach grounded in a Master's in Data Science and Financial Technologies. Designed and deployed agentic systems to streamline operations and accelerate software development workflows.
+
+Highlights:
+- Apply AI-native practices across the full engineering lifecycle
+- Design and deploy agentic systems that automate complex operational workflows
+- Approach AI with a scientific rigour — Master's in Data Science underpins every model decision
+- Bring a systems engineering lens to AI: reliability, observability, failure modes
+
+Stack: AI-native, Agentic Systems, LLM Integration, PyTorch, MLX, Fine-tuning, NLP, MLOps
+
+#### Scientific foundation
+
+A Master's in Data Analysis and Financial Technologies from HSE means AI is not a buzzword — it's a discipline. Model selection, evaluation methodology, and statistical rigour are built into how I approach every AI problem.
+
+#### Agentic systems
+
+Designed and deployed systems where AI agents take on real operational workloads — not demos, but production systems with real business impact.
+
+- Autonomous agents for operations: alert triage, runbook execution, incident response
+- Development workflow agents: PR review, test generation, architecture validation
+- Multi-step reasoning pipelines with tool use, memory, and structured output
+- Evaluation frameworks to measure and improve agent reliability over time
+
+#### The engineering lens
+
+AI systems require the same engineering discipline as any other production system — reliability, observability, failure modes, and graceful degradation.
+
+- Fine-tuned open-weights models matching commercial LLM quality at lower cost
+- LLM integration patterns: streaming, tool use, structured output, caching
+- Evaluation and feedback loops built into the deployment lifecycle
+- Cost, latency, and reliability tradeoffs navigated with production constraints
+
+### leadership (5y)
+
+People-oriented, agile, strong stakeholder management
+
+People-oriented leader who finds each person's strengths to benefit the team. Agile mindset — moves fast and adapts to challenges. Result-oriented with strong stakeholder management skills that navigate corporate environments to bring projects to life.
+
+Highlights:
+- Find each person's strengths and channel them toward shared goals
+- Move fast with an agile mindset — adapt priorities as challenges evolve
+- Navigate stakeholder dynamics to unblock and ship projects that matter
+- Deliver results even in complex, politically charged environments
+
+Stack: Agile, People Management, Stakeholder Management, Team Building, Result-Oriented, Mentorship
+
+#### People first
+
+Great engineering output comes from people who feel seen and have their strengths channeled toward meaningful work. I lead by understanding each individual first — their motivation, their working style, what makes them sharp — and then designing a team dynamic that amplifies that.
+
+#### Delivery mindset
+
+Leadership without results is just management. I combine a people-first approach with an unwavering commitment to shipping — even when the environment is corporate, slow, or politically complex.
+
+- Agile without dogma: adapt the process to the team, not the team to the process
+- Stakeholder alignment before, during, and after — no surprise pivots
+- Unblocking teams by navigating org dynamics rather than fighting them
+- Moving fast by making the right calls early and correcting course quickly
+
+#### What I bring to a team
+
+Whether leading from the front or enabling others to lead, I orient toward the outcome: a team that works well together and ships things that matter.
+
+- Clarity of direction — people should never wonder what success looks like
+- Psychological safety — the team speaks up, experiments, and learns
+- A bias toward action combined with discipline in prioritization
+- Mentorship and career growth as a shared responsibility, not an afterthought
+
+### backend (7y)
+
+Horizontally scalable, high-availability, geographically distributed systems
+
+Designed and built complex horizontally scalable, geographically distributed systems in Go and C#. Used and deployed PostgreSQL, Elasticsearch, Redis, and Kafka in production — both in application code and infrastructure.
+
+Highlights:
+- Design horizontally scalable, high-availability systems spanning multiple geographic regions
+- Build event-driven architectures with Kafka for high-throughput data pipelines
+- Implement full-text search with Elasticsearch at production scale
+- Reach for the right tool — PostgreSQL, Redis, Kafka — and operate it in production
+
+Stack: Go, C#, PostgreSQL, Elasticsearch, Redis, Kafka, gRPC, REST
+
+#### Systems I designed
+
+Geographically distributed systems that scale horizontally — built to handle real production load with real failure modes. Not just code that works on a laptop, but services that run in multiple regions with consistent guarantees.
+
+#### Data infrastructure
+
+Used the right tool for each job — and then operated it in production myself.
+
+- PostgreSQL for relational data with complex query patterns and JSONB
+- Elasticsearch for full-text search, aggregations, and analytical queries
+- Redis for low-latency caching, pub/sub, distributed locks, and rate limiting
+- Kafka for durable event streaming and decoupled service communication
+
+#### Languages & patterns
+
+Go for high-throughput services where performance and simplicity matter. C# for complex domain logic and enterprise integrations.
+
+- Go: goroutines, channels, context propagation, graceful shutdown
+- C#: async/await, dependency injection, Clean Architecture, domain-driven design
+- gRPC for internal service communication with schema-first contracts
+- Idempotent consumers and exactly-once processing patterns with Kafka
+
+### devops (7y)
+
+Kubernetes internals, cloud migrations, multi-cloud CI/CD
+
+Can navigate Kubernetes source code and understand its architecture. Migrated complex systems across clouds, from Nomad to Kubernetes. Developed flexible CI/CD pipelines that work across multiple clouds, regions, and topologies.
+
+Highlights:
+- Navigate Kubernetes source code and understand its internals
+- Lead full cloud migrations — cross-cloud and Nomad → Kubernetes
+- Build CI/CD pipelines that adapt dynamically to any cloud, region, or topology
+- Own the full infrastructure stack — not just the YAML, but the actual operations
+
+Stack: Kubernetes, Nomad, CI/CD, Multi-cloud, Cloud Migration, Helm, Terraform, Docker
+
+#### Kubernetes depth
+
+Kubernetes is not just a deployment target — I understand how it works internally. This means I can debug obscure scheduler behavior, understand what a controller is actually doing, and make informed decisions about resource configuration rather than guessing.
+
+#### Migrations
+
+Migrated production systems with real users and real constraints.
+
+- Nomad → Kubernetes migration: zero-downtime, multi-service, multi-team coordination
+- Cross-cloud migrations preserving data integrity and minimizing blast radius
+- Networking and DNS topology changes across migration boundaries
+- Rollback planning and live traffic validation at each stage
+
+#### CI/CD
+
+Built pipelines designed to be extended, not just used. The goal: a single pipeline definition that works across any cloud, region, or environment — no forking, no duplication.
+
+- Dynamic environment targeting based on branch, tag, or environment variable
+- Multi-cloud deployment steps with environment-specific secret injection
+- Parallel deployment strategies across regions with health gate validation
+- Rollback automation triggered by metric thresholds post-deploy
+
+### frontend (8y)
+
+Complex B2B platforms with micro frontend architecture
+
+Built a complex B2B platform from scratch with a high abstraction level supporting multiple financial products. Applied cutting-edge micro frontend architecture with Webpack Module Federation.
+
+Highlights:
+- Architect B2B platforms from scratch with high abstraction across multiple product lines
+- Apply Webpack Module Federation for true runtime micro frontend composition
+- Design shared component systems consumed across independently deployed micro apps
+- Ship production Angular at scale with robust state management
+
+Stack: Angular, Micro Frontend, Module Federation, Webpack, TypeScript, RxJS
+
+#### What I built
+
+A complex B2B platform from scratch, supporting multiple financial products through a high-abstraction shared design system. The platform was designed so individual product teams could ship independently while composing seamlessly at runtime.
+
+#### Architecture
+
+Micro frontend architecture using Webpack Module Federation — each financial product as a separately deployed remote, composed dynamically into a shell.
+
+- Shell application orchestrating dynamic remote loading at runtime
+- Shared design system and utility library consumed across all remotes
+- Federated routing and authentication with zero coupling between products
+- Independent CI/CD pipelines per remote — deploy without coordination
+
+#### Key skills demonstrated
+
+This project required deep knowledge of the entire frontend stack — from Webpack internals to Angular dependency injection to module resolution.
+
+- Webpack Module Federation configuration and optimization
+- Angular architecture patterns: lazy loading, feature modules, DI
+- TypeScript at scale: generics, type guards, shared type contracts
+- Performance budgeting and bundle analysis across federated modules
+
+## Experience
+
+### TradingView — Jan 2025 – Present
+
+Location: Hybrid, Malaga, Spain
+Roles: Principal Engineer (Apr 2026 – Present) · Team Lead (Jan 2025 – Apr 2026)
+
+- Developing internal AI platform to accelerate product and software development lifecycle processes [ai]
+- Designed and developed 2 new products end-to-end, expanding the company's portfolio [leadership, ai]
+- Optimised team processes accelerating delivery by 30% [leadership]
+- Founded the Engineering Committee driving 5 global initiatives across CI/CD, telemetry, architecture, and integration testing [leadership, devops]
+- Built an AI Skills Library embedding AI tooling into the SDLC; ran adoption workshops across engineering teams [ai, leadership]
+- Prototyped AI-native products to streamline roadmap prioritisation [ai]
+- Fine-tuned open-weights models for data enrichment pipelines, matching commercial LLM quality at lower cost [ai, backend]
+
+### SimplyFi — May 2023 – Jan 2025
+
+Location: Dubai, UAE
+Roles: CTO
+
+- Led platform adaptation for 3 international markets (Russia, UAE, KSA) across YandexCloud, AWS, and GCP [devops, leadership]
+- Reduced infrastructure costs by 50% via cloud migration to managed services [devops]
+- Led the development and integration of 4 new fintech products for SMEs into the platform [backend, leadership]
+
+### SimpleFinance Group — Aug 2019 – May 2023
+
+Location: Moscow, Russia
+Roles: Team Lead · Senior Software Developer
+
+- Designed micro-frontend architecture (Webpack Module Federation, Angular 12, NgRx) — 5× faster builds, 50% faster development [frontend]
+- Built CLI tooling in Go for micro-frontend workflows, cutting boilerplate and increasing dev speed by 20% [backend, frontend]
+- Led Kubernetes migration improving system maintainability by 30% and enhancing scalability [devops]
+- Reduced downtime by 40% via comprehensive monitoring, alerting, and high-availability infrastructure [devops, backend]
+- Recruited and mentored a team of 15 engineers, QA, and analysts [leadership]
+
+### Loyalty & Media Group — Aug 2018 – Aug 2019
+
+Location: Moscow, Russia
+Roles: Senior Frontend Developer
+
+- Senior frontend engineering role building loyalty and media products [frontend]
+
+## Education
+
+### Higher School of Economics — 2017–2023
+
+Moscow, Russia. Master's Degree in Data Analysis and Financial Technologies. GPA 8.0.
+
+## Links
+
+- [Home](/)
+- [CV](/cv)
+- [AI](/ai): AI-native development, agentic systems for ops & engineering
+- [leadership](/leadership): People-oriented, agile, strong stakeholder management
+- [backend](/backend): Horizontally scalable, high-availability, geographically distributed systems
+- [devops](/devops): Kubernetes internals, cloud migrations, multi-cloud CI/CD
+- [frontend](/frontend): Complex B2B platforms with micro frontend architecture
