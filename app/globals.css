@@ -118,3 +118,41 @@ ga-card::part(body) {
   flex-direction: column;
   gap: 12px;
 }
+
+/* ga-header: the kit makes an element INSIDE the shadow root sticky, whose
+   containing block is the 56px host — so it would scroll away. Make the host
+   itself the sticky element instead. */
+ga-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: block;
+  background: var(--background);
+}
+ga-header:not(:defined) {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 56px;
+  padding: 0 16px;
+}
+ga-header:not(:defined) > [slot="brand"] {
+  margin-right: auto;
+  font-weight: 600;
+  color: var(--foreground);
+}
+ga-code:not(:defined) {
+  display: block;
+  padding: 10px 12px;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  background: var(--card);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 14px;
+  color: var(--foreground);
+}
+ga-table:not(:defined) {
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
