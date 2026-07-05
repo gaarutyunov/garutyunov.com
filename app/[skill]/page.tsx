@@ -112,12 +112,9 @@ export default async function SkillPage({
             <SectionLabel>Stack</SectionLabel>
             <div className="flex flex-wrap gap-1.5">
               {skill.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="text-[10px] px-2 py-0.5 rounded bg-border-subtle text-muted border border-border-subtle"
-                >
+                <ga-badge key={tag} size="sm">
                   {tag}
-                </span>
+                </ga-badge>
               ))}
             </div>
           </div>

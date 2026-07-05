@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { Fira_Mono, Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import { HumanAiSwitch } from "@/components/human-ai-switch";
+// GA UI Kit design tokens (--ga-* custom properties). The kit's components
+// read these with built-in fallbacks, but loading the file makes the tokens
+// available for theming and keeps the kit in lockstep with the site palette.
+import "@gaarutyunov/ui-kit/tokens.css";
 import "./globals.css";
 
 const firaMono = Fira_Mono({

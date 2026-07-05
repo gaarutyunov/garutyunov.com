@@ -6,12 +6,9 @@ export function SkillChip({ skillId }: { skillId: string }) {
   if (!skill) return null;
 
   return (
-    <span className="relative group/chip inline-block">
-      <Link
-        href={`/${skillId}`}
-        className="inline-flex items-center px-2.5 py-0.5 rounded-full border border-border text-xs text-muted hover:bg-card/30 hover:text-foreground transition-colors"
-      >
-        {skill.title}
+    <span className="relative group/chip inline-block align-middle">
+      <Link href={`/${skillId}`} className="inline-block align-middle">
+        <ga-badge>{skill.title}</ga-badge>
       </Link>
 
       {/* Hover thumbnail card */}

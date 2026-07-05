@@ -158,12 +158,7 @@ export default function CVPage() {
             <SectionLabel>Skills</SectionLabel>
             <div className="flex flex-wrap gap-1.5">
               {cvSkills.map((s) => (
-                <span
-                  key={s}
-                  className="inline-flex items-center px-2.5 py-0.5 rounded-full border border-border text-xs text-muted"
-                >
-                  {s}
-                </span>
+                <ga-badge key={s}>{s}</ga-badge>
               ))}
             </div>
           </div>

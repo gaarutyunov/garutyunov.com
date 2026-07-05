@@ -76,3 +76,45 @@ body {
     transparent
   );
 }
+
+/* ── GA UI Kit (@gaarutyunov/ui-kit) ─────────────────────────────────────
+   Fallback styling for the moment before the custom elements register
+   (instrumentation-client.ts upgrades them just before hydration). :not(:defined)
+   matches an element only until its definition loads, so this prevents a flash
+   of unstyled content on first paint of the statically-exported HTML. Values
+   mirror the components' own defaults. */
+ga-badge:not(:defined) {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 10px;
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--muted);
+  white-space: nowrap;
+}
+ga-card:not(:defined) {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--card) 30%, transparent);
+}
+
+/* Let a card's slotted body fill its height so footers pin to the bottom in
+   equal-height grids (reproduces the old flex-col + mt-auto project cards).
+   ::part() reaches into the component's shadow DOM from the page. */
+ga-card::part(card),
+ga-card::part(body) {
+  height: 100%;
+}
+ga-card::part(body) {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
