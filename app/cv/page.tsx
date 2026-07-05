@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SectionLabel } from "@/components/section-label";
 import { SkillChip } from "@/components/skill-chip";
 import { experience } from "@/lib/experience";
+import { asset } from "@/lib/base-path";
 
 export const metadata: Metadata = {
   title: "CV",
@@ -25,13 +26,14 @@ const cvSkills = [
 export default function CVPage() {
   return (
     <div className="min-h-screen max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <nav className="flex items-center gap-2 text-sm font-mono text-muted pt-4 pb-6">
-        <Link href="/" className="hover:text-foreground transition-colors shrink-0">
-          German Arutyunov
-        </Link>
-        <span className="shrink-0">/</span>
-        <span className="text-foreground">CV</span>
-      </nav>
+      <div className="pt-4 pb-6">
+        <ga-breadcrumbs
+          items={JSON.stringify([
+            { label: "German Arutyunov", href: asset("/") },
+            { label: "CV" },
+          ])}
+        />
+      </div>
 
       <section className="pb-12 border-b border-border">
         <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-foreground mb-2">
@@ -50,20 +52,13 @@ export default function CVPage() {
           integration, and data-driven decision-making.
         </p>
 
-        <div className="mt-6 flex flex-wrap gap-3">
-          <a
-            href="mailto:germanarutyunov@gmail.com"
-            className="inline-flex items-center rounded-md bg-card/80 px-4 py-2.5 font-mono text-sm text-foreground hover:bg-card-hover transition-colors"
-          >
-            <span className="text-muted mr-2">$</span>
-            <span>mailto:germanarutyunov@gmail.com</span>
-          </a>
-          <a
-            href="/German_Arutyunov_CV.docx"
-            download
-            className="inline-flex items-center gap-2 rounded-md border border-border px-4 py-2.5 text-sm text-foreground hover:bg-card/30 transition-colors"
-          >
+        <div className="mt-6 flex flex-wrap items-center gap-3">
+          <ga-code prompt="$" href="mailto:germanarutyunov@gmail.com">
+            mailto:germanarutyunov@gmail.com
+          </ga-code>
+          <ga-button href={asset("/German_Arutyunov_CV.docx")} download>
             <svg
+              slot="start"
               width="16"
               height="16"
               viewBox="0 0 24 24"
@@ -79,7 +74,7 @@ export default function CVPage() {
               <line x1="12" y1="15" x2="12" y2="3" />
             </svg>
             Download CV
-          </a>
+          </ga-button>
         </div>
       </section>
 
@@ -158,12 +153,7 @@ export default function CVPage() {
             <SectionLabel>Skills</SectionLabel>
             <div className="flex flex-wrap gap-1.5">
               {cvSkills.map((s) => (
-                <span
-                  key={s}
-                  className="inline-flex items-center px-2.5 py-0.5 rounded-full border border-border text-xs text-muted"
-                >
-                  {s}
-                </span>
+                <ga-badge key={s}>{s}</ga-badge>
               ))}
             </div>
           </div>

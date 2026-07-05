@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { skills, getSkill } from "@/lib/skills";
 import { getExperienceForSkill } from "@/lib/experience";
 import { SectionLabel } from "@/components/section-label";
+import { asset } from "@/lib/base-path";
 
 export function generateStaticParams() {
   return skills.map((s) => ({ skill: s.id }));
@@ -40,13 +41,14 @@ export default async function SkillPage({
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-2 sm:py-10">
-      <nav className="flex items-center gap-2 text-xs text-dim pt-8 pb-6">
-        <Link href="/" className="hover:text-foreground transition-colors shrink-0">
-          German Arutyunov
-        </Link>
-        <span className="shrink-0">/</span>
-        <span className="text-foreground">{skill.title}</span>
-      </nav>
+      <div className="pt-8 pb-6">
+        <ga-breadcrumbs
+          items={JSON.stringify([
+            { label: "German Arutyunov", href: asset("/") },
+            { label: skill.title },
+          ])}
+        />
+      </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 pb-16">
         {/* Main — 9 cols */}
@@ -112,12 +114,9 @@ export default async function SkillPage({
             <SectionLabel>Stack</SectionLabel>
             <div className="flex flex-wrap gap-1.5">
               {skill.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="text-[10px] px-2 py-0.5 rounded bg-border-subtle text-muted border border-border-subtle"
-                >
+                <ga-badge key={tag} size="sm">
                   {tag}
-                </span>
+                </ga-badge>
               ))}
             </div>
           </div>

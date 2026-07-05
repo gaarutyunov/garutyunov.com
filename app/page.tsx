@@ -2,7 +2,6 @@ import { skills } from "@/lib/skills";
 import { projects } from "@/lib/projects";
 import { fetchAllProjectMeta } from "@/lib/og";
 import { AsciiName } from "@/components/ascii-name";
-import { CodeSnippet } from "@/components/code-snippet";
 import { TechIcons } from "@/components/tech-icons";
 import { SkillsLeaderboard } from "@/components/skills-leaderboard";
 import { PetProjects } from "@/components/pet-projects";
@@ -35,10 +34,9 @@ export default async function Home() {
       <section className="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-10 lg:gap-14 mt-12">
         <div className="min-w-[320px]">
           <SectionLabel>Get in touch</SectionLabel>
-          <CodeSnippet
-            command="mailto:germanarutyunov@gmail.com"
-            href="mailto:germanarutyunov@gmail.com"
-          />
+          <ga-code prompt="$" href="mailto:germanarutyunov@gmail.com">
+            mailto:germanarutyunov@gmail.com
+          </ga-code>
         </div>
         <div className="min-w-0">
           <SectionLabel>Working with these technologies</SectionLabel>

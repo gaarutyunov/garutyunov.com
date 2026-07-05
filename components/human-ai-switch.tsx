@@ -11,25 +11,21 @@ function aiUrlFor(pathname: string): string {
 export function HumanAiSwitch() {
   const pathname = usePathname() ?? "/";
   const aiHref = aiUrlFor(pathname);
+
+  // The kit's radio group is single-select: "Human" is the current (selected)
+  // view and "AI" is a link to the markdown/plain-text rendition. An item with
+  // `href` renders as an anchor, so selecting it navigates.
+  const items = JSON.stringify([
+    { id: "human", label: "Human" },
+    { id: "ai", label: "AI", href: aiHref },
+  ]);
+
   return (
-    <div
-      role="group"
+    <ga-radio-group
+      value="human"
+      items={items}
       aria-label="View mode"
-      className="inline-flex items-center text-[10px] font-mono rounded-md border border-border overflow-hidden"
-    >
-      <span
-        aria-current="true"
-        className="px-2 py-1 bg-foreground text-background"
-      >
-        Human
-      </span>
-      <a
-        href={aiHref}
-        className="px-2 py-1 text-muted hover:text-foreground hover:bg-card/40 transition-colors"
-        title="View as plain text / markdown for LLMs"
-      >
-        AI
-      </a>
-    </div>
+      title="Switch between the human view and the plain-text / markdown view for LLMs"
+    />
   );
 }

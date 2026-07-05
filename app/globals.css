@@ -76,3 +76,83 @@ body {
     transparent
   );
 }
+
+/* ── GA UI Kit (@gaarutyunov/ui-kit) ─────────────────────────────────────
+   Fallback styling for the moment before the custom elements register
+   (instrumentation-client.ts upgrades them just before hydration). :not(:defined)
+   matches an element only until its definition loads, so this prevents a flash
+   of unstyled content on first paint of the statically-exported HTML. Values
+   mirror the components' own defaults. */
+ga-badge:not(:defined) {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 10px;
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--muted);
+  white-space: nowrap;
+}
+ga-card:not(:defined) {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--card) 30%, transparent);
+}
+
+/* Let a card's slotted body fill its height so footers pin to the bottom in
+   equal-height grids (reproduces the old flex-col + mt-auto project cards).
+   ::part() reaches into the component's shadow DOM from the page. */
+ga-card::part(card),
+ga-card::part(body) {
+  height: 100%;
+}
+ga-card::part(body) {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ga-header: the kit makes an element INSIDE the shadow root sticky, whose
+   containing block is the 56px host — so it would scroll away. Make the host
+   itself the sticky element instead. */
+ga-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: block;
+  background: var(--background);
+}
+ga-header:not(:defined) {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 56px;
+  padding: 0 16px;
+}
+ga-header:not(:defined) > [slot="brand"] {
+  margin-right: auto;
+  font-weight: 600;
+  color: var(--foreground);
+}
+ga-code:not(:defined) {
+  display: block;
+  padding: 10px 12px;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  background: var(--card);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 14px;
+  color: var(--foreground);
+}
+ga-table:not(:defined) {
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
