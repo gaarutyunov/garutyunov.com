@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://garutyunov.com
+Sitemap: https://garutyunov.com/sitemap.xml
