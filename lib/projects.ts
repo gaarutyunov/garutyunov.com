@@ -36,4 +36,15 @@ export const projects: Project[] = [
       icon: "/projects/stereoscope.png",
     },
   },
+  {
+    id: "boids",
+    url: "https://boids.garutyunov.com",
+    fallback: {
+      name: "Pinch-Boids",
+      description:
+        "Control a flock of boids by pinching your fingers, tracked live from your webcam — flock, gather, and orbit, all running in the browser on WebGPU.",
+      created: "2026-06-28",
+      icon: "/projects/boids.png",
+    },
+  },
 ];
