@@ -27,14 +27,16 @@ export function PetProjects({ projects }: { projects: ResolvedProject[] }) {
             className="group flex flex-col gap-3 rounded-lg border border-border bg-card/30 p-5 transition-colors hover:bg-card/60 hover:border-dim"
           >
             <div className="flex items-center gap-3">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={asset(project.icon)}
-                alt=""
-                width={40}
-                height={40}
-                className="h-10 w-10 shrink-0 rounded-md object-cover"
-              />
+              {project.icon && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={asset(project.icon)}
+                  alt=""
+                  width={40}
+                  height={40}
+                  className="h-10 w-10 shrink-0 rounded-md object-cover"
+                />
+              )}
               <h3 className="font-semibold text-foreground group-hover:text-c-blue transition-colors">
                 {project.name}
               </h3>

@@ -35,8 +35,12 @@ jobs:
       - name: Build static export
         if: github.event.action != 'closed'
         # basePath must match the preview sub-path so /_next/ assets resolve.
+        # GITHUB_TOKEN is REQUIRED: pet projects are discovered from GitHub at
+        # build time (lib/github-projects.ts). The default token covers public
+        # repos; set a PROJECTS_TOKEN secret (a PAT) to also surface private ones.
         env:
           NEXT_PUBLIC_BASE_PATH: /pr-preview/pr-${{ github.event.number }}
+          GITHUB_TOKEN: ${{ secrets.PROJECTS_TOKEN || secrets.GITHUB_TOKEN }}
         run: npm run build
 
       - name: Add .png extension to OG image
