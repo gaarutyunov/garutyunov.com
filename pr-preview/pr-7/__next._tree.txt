@@ -6,5 +6,6 @@
 :HL["/pr-preview/pr-7/_next/static/media/cfbeec1432aa9326-s.p.0al9mw4orhbgl.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/pr-preview/pr-7/agents/goose.svg","image"]
 :HL["/pr-preview/pr-7/agents/pi-mono.png","image"]
+:HL["https://site-review.garutyunov.com/public/site-review.png","image"]
 :HL["https://stereoscope.garutyunov.com/favicon.png","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"kjKRldnusOJEVLdGQClnt"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"ioUSAk_Yqi0Sui4290y2i"}
