@@ -35,6 +35,14 @@ jobs:
         run: npm ci
 
       - name: Build static export
+        # Pet projects are discovered from GitHub at build time
+        # (lib/github-projects.ts) — GITHUB_TOKEN is REQUIRED or the build fails.
+        # The default token authenticates discovery and covers public repos; to
+        # also surface PRIVATE pet-project repos, set a PROJECTS_TOKEN secret (a
+        # PAT with read access to the private repos) — the default GITHUB_TOKEN
+        # is scoped to this repo only and cannot see them.
+        env:
+          GITHUB_TOKEN: ${{ secrets.PROJECTS_TOKEN || secrets.GITHUB_TOKEN }}
         run: npm run build
 
       - name: Add .png extension to OG image

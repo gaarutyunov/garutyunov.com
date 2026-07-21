@@ -1,5 +1,5 @@
 import { skills } from "@/lib/skills";
-import { projects } from "@/lib/projects";
+import { discoverPetProjects } from "@/lib/github-projects";
 import { fetchAllProjectMeta } from "@/lib/og";
 import { AsciiName } from "@/components/ascii-name";
 import { CodeSnippet } from "@/components/code-snippet";
@@ -12,6 +12,7 @@ import { SectionLabel } from "@/components/section-label";
 export const dynamic = "force-static";
 
 export default async function Home() {
+  const projects = await discoverPetProjects();
   const resolvedProjects = await fetchAllProjectMeta(projects);
 
   return (
