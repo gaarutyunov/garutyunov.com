@@ -35,6 +35,83 @@ function decodeEntities(s: string): string {
   });
 }
 
+/** The subset of a `<link>` tag's attributes icon selection needs. */
+interface LinkTag {
+  /** `rel` split on whitespace and lowercased, so `rel="shortcut icon"` matches. */
+  rels: string[];
+  href: string;
+  sizes?: string;
+  type?: string;
+}
+
+function parseLinks(html: string): LinkTag[] {
+  const links: LinkTag[] = [];
+  for (const tag of html.match(/<link\b[^>]*>/gi) ?? []) {
+    const rel = getAttr(tag, "rel");
+    const href = getAttr(tag, "href");
+    if (!rel || !href?.trim()) continue;
+    links.push({
+      rels: rel.toLowerCase().split(/\s+/).filter(Boolean),
+      href: decodeEntities(href.trim()),
+      sizes: getAttr(tag, "sizes")?.toLowerCase(),
+      type: getAttr(tag, "type")?.toLowerCase(),
+    });
+  }
+  return links;
+}
+
+/** Largest edge declared in a `sizes` attribute ("32x32 16x16" → 32); 0 if absent. */
+function largestDeclaredSize(sizes: string | undefined): number {
+  let best = 0;
+  for (const token of sizes?.split(/\s+/) ?? []) {
+    const m = token.match(/^(\d+)x(\d+)$/);
+    if (m) best = Math.max(best, Number(m[1]), Number(m[2]));
+  }
+  return best;
+}
+
+/** The size Safari assumes for an `apple-touch-icon` that declares none. */
+const APPLE_TOUCH_DEFAULT_PX = 180;
+
+function hasExtension(href: string, ext: string) {
+  return new RegExp(`\\.${ext}(?:[?#]|$)`, "i").test(href);
+}
+
+/**
+ * Pick the best square icon a page declares, or `undefined` if it declares none.
+ *
+ * Ranked by how well it renders in the card's 40px (80 physical px on a retina
+ * display) slot: an SVG scales to any density, then the largest declared raster,
+ * then a raster of unknown size, and only as a last resort a legacy `.ico` —
+ * a multi-resolution container browsers render poorly through plain `<img>`.
+ */
+function pickIcon(links: LinkTag[]): string | undefined {
+  let best: { href: string; score: number } | undefined;
+
+  for (const link of links) {
+    const apple =
+      link.rels.includes("apple-touch-icon") ||
+      link.rels.includes("apple-touch-icon-precomposed");
+    // `mask-icon` is deliberately excluded: it is a monochrome silhouette.
+    if (!apple && !link.rels.includes("icon")) continue;
+
+    const score =
+      link.type === "image/svg+xml" || hasExtension(link.href, "svg")
+        ? 100_000
+        : link.type === "image/x-icon" ||
+            link.type === "image/vnd.microsoft.icon" ||
+            hasExtension(link.href, "ico")
+          ? 1
+          : 10 +
+            (largestDeclaredSize(link.sizes) ||
+              (apple ? APPLE_TOUCH_DEFAULT_PX : 0));
+
+    if (!best || score > best.score) best = { href: link.href, score };
+  }
+
+  return best?.href;
+}
+
 function parseMeta(html: string): Map<string, string> {
   const map = new Map<string, string>();
   for (const tag of html.match(/<meta\b[^>]*>/gi) ?? []) {
@@ -60,7 +137,8 @@ export async function fetchProjectMeta(
       headers: { "user-agent": "garutyunov.com link-preview crawler" },
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const meta = parseMeta(await res.text());
+    const html = await res.text();
+    const meta = parseMeta(html);
 
     const pick = (...keys: string[]) => {
       for (const k of keys) {
@@ -70,7 +148,13 @@ export async function fetchProjectMeta(
       return undefined;
     };
 
-    const rawImage = pick("og:image", "twitter:image", "twitter:image:src");
+    // The card's image slot is a 40px square, so it wants the project's ICON,
+    // never its `og:image` — that is a 1200x630 landscape social banner, and
+    // cropping one into a square is the defect this replaced (issue #8).
+    // Relative hrefs resolve against the response's final URL so a homepage that
+    // redirects (e.g. to a trailing slash) still resolves "./favicon.png".
+    const iconHref = pickIcon(parseLinks(html));
+    const base = res.url || url;
 
     return {
       id,
@@ -82,7 +166,7 @@ export async function fetchProjectMeta(
       created:
         pick("article:published_time", "article:modified_time") ??
         fallback.created,
-      icon: rawImage ? new URL(rawImage, url).toString() : fallback.icon,
+      icon: iconHref ? new URL(iconHref, base).toString() : fallback.icon,
     };
   } catch {
     // Site unreachable or malformed — fall back to the baked-in metadata.
