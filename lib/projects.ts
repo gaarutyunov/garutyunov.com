@@ -20,10 +20,12 @@ export interface ResolvedMeta {
   /** ISO date the project was created, e.g. "2026-06-21". */
   created: string;
   /**
-   * Card image URL. Sourced from the live page's `og:image` at crawl time —
-   * every pet project ships one via the social-image skill (workspace#12), so
-   * there is no bundled placeholder. Optional because a project whose live page
-   * is missing its `og:image` (a source-project defect) has no card image.
+   * Card icon URL — the project's ICON, resolved from the `<link rel="icon">` /
+   * `<link rel="apple-touch-icon">` its live page declares (see lib/og.ts).
+   * Deliberately NOT the page's `og:image`: that is a 1200x630 landscape social
+   * banner, and squeezing one into the card's 40px square slot was issue #8.
+   * Optional — a project whose page declares no icon, or whose page is
+   * unreachable at build time, renders a monogram placeholder instead.
    */
   icon?: string;
 }
